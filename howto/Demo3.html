@@ -1,0 +1,39 @@
+<html>
+<head>
+<style type="text/css">
+    .kenburns {
+      -webkit-transform: translateZ(0);
+      position: relative;
+      width: 480px; 
+      height: 180px;
+      overflow: hidden;
+      -webkit-transition-duration: 0.5s;
+      -webkit-transition-timing-function: ease-in-out;
+      -webkit-transition-property: height;
+    }
+    .kenburns:hover {
+      height: 360px;
+    }
+    .kenburns img {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      -webkit-transition-duration: 0.5s;
+      -webkit-transition-timing-function: ease-in-out;
+      -webkit-transform: scale(1.25) rotate(9deg);
+      -webkit-transform-origin: 50% 50%;
+    }
+    .kenburns img:hover {
+      -webkit-transform: scale(1.6) rotate(0deg);
+      -webkit-transform-origin: 0% 25%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="kenburns">
+    <img src="../640-image1.jpg" width="480" height="360">
+  </div>
+  <p>Hover over me!</p>
+</body>
+</html>
