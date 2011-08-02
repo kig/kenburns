@@ -1,0 +1,94 @@
+<html>
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+    }
+    
+    h1 {
+      margin-top: 2.50em;
+      margin-bottom: 0.5em;
+      font-family: 'Raleway', sans-serif;
+      font-size: 60px;
+      font-weight: normal;
+    }
+    
+    
+    section.photoslide {
+      white-space: nowrap;
+    }
+    
+    article {
+      display: inline-block;
+      vertical-align: top;
+      width: 480px;
+      margin-top: -180px;
+    }
+
+    .kenburns {
+      -webkit-transform: translateZ(0);
+      position: relative;
+      width: 480px; 
+      height: 180px;
+      margin-top: 180px;
+      overflow: hidden;
+      -webkit-transition-duration: 0.5s;
+      -webkit-transition-timing-function: ease-in-out;
+    }
+    .kenburns:hover {
+      margin-top: 0px;
+      height: 360px;
+    }
+    .kenburns img {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      -webkit-transition-duration: 0.5s;
+      -webkit-transition-timing-function: ease-in-out;
+      -webkit-transform: scale(1.25) rotate(9deg);
+      -webkit-transform-origin: 50% 50%;
+    }
+    .kenburns img:hover {
+      -webkit-transform: scale(1.6) rotate(0deg);
+    }
+
+    .kenburns img.scrapbook:hover {
+      -webkit-transform-origin: 0% 25%;
+    }
+    .kenburns img.brits:hover {
+      -webkit-transform-origin: 80% 15%;
+    }
+    .kenburns img.sonne:hover {
+      -webkit-transform-origin: 50% 25%;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>This is a title!</h1>
+  <section class="photoslide">
+  <article>
+    <div class="kenburns">
+      <img class="scrapbook" src="../640-image1.jpg" width="480" height="360">
+    </div>
+    <p>Hover over me!</p>
+  </article>
+  <article>
+    <div class="kenburns">
+      <img class="brits" src="../640-image2.jpg" width="480" height="360">
+    </div>
+    <p>Hover over me!</p>
+  </article>
+  <article>
+    <div class="kenburns">
+      <img class="sonne" src="../640-image3.jpg" width="480" height="360">
+    </div>
+    <p>Hover over me!</p>
+  </article>
+  </section>
+</body>
+</html>
