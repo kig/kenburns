@@ -72,66 +72,76 @@
     </section>
     <script type="text/javascript">
       (function() {
-        var currentImage = null;
+        var CurrentImage = null;
+
         var removeSelf = function() { this.parentNode.removeChild(this); };
-        window.onclick = function(ev) {
-          if (currentImage && ev.button == 0 && !ev.ctrlKey && !ev.altKey && !ev.shiftKey) {
-            currentImage.style.opacity = 0;
-            currentImage.addEventListener('webkitTransitionEnd', removeSelf, false);
-            currentImage.addEventListener('transitionend', removeSelf, false);
-            currentImage.addEventListener('OTransitionEnd', removeSelf, false);
-            currentImage = null;
+
+        var createNewLightbox = function(x, y, src, className) {
+          var newImg = new Image();
+          var dw = Math.min(document.body.offsetWidth, window.innerWidth);
+          var dh = Math.min(document.body.offsetHeight, window.innerHeight);
+          var f = Math.min(1, (dw - 20) / 1024, (dh - 20) / 767);
+          var w = 1024*f;
+          var h = 767*f;
+          newImg.width = w;
+          newImg.height = h;
+          newImg.className = className;
+          newImgDiv = document.createElement('div');
+          newImgDiv.className = 'kenburns';
+          newImgDiv.style.width = w + 'px';
+          newImgDiv.style.height = h + 'px';
+          newImgDiv.style.left = x - w/2 + 'px';
+          newImgDiv.style.top = y - h/2 + 'px';
+          newImgDiv.appendChild(newImg);
+          newImg.addEventListener('load', function() {
+            newImgDiv.style.left = (dw - w) / 2 + 'px';
+            newImgDiv.style.top = (dh - h) / 2 + 'px';
+            newImgDiv.setAttribute('zoomin', 'true');
+            newImg.setAttribute('zoomin', 'true');
+          }, false);
+          newImg.src = src;
+          var newLightbox = document.createElement('div');
+          newLightbox.className = 'lightbox';
+          newLightbox.appendChild(newImgDiv);
+          return newLightbox;
+        };
+
+        var lightboxLink = function(a, src, className) {
+          a.addEventListener('click', function(ev) {
+            if (ev.button == 0 && !ev.ctrlKey && !ev.altKey && !ev.shiftKey) {
+              if (CurrentImage) {
+                CurrentImage.parentNode.removeChild(CurrentImage);
+                CurrentImage = null;
+              }
+              ev.preventDefault();
+              ev.stopPropagation();
+              var lightbox = createNewLightbox(ev.clientX, ev.clientY, src, className);
+              setTimeout(function() { lightbox.style.opacity = 1; }, 0);
+              document.body.appendChild(lightbox);
+              CurrentImage = lightbox;
+            }
+          }, false);
+        };
+
+        window.addEventListener('click', function(ev) {
+          if (CurrentImage && ev.button == 0 && !ev.ctrlKey && !ev.altKey && !ev.shiftKey) {
+            CurrentImage.style.opacity = 0;
+            CurrentImage.addEventListener('webkitTransitionEnd', removeSelf, false);
+            CurrentImage.addEventListener('transitionend', removeSelf, false);
+            CurrentImage.addEventListener('OTransitionEnd', removeSelf, false);
+            CurrentImage = null;
           }
-        }
+        }, false);
+
         var divs = document.getElementsByClassName('menuImage');
         for (var i=0; i<divs.length; i++) {
           var div = divs[i];
           var links = div.getElementsByTagName('a');
           for (var j=0; j<links.length; j++) {
             var a = links[j];
-            a.onclick = function(ev) {
-              if (ev.button == 0 && !ev.ctrlKey && !ev.altKey && !ev.shiftKey) {
-                if (currentImage) {
-                  currentImage.parentNode.removeChild(currentImage);
-                  currentImage = null;
-                }
-                ev.preventDefault();
-                ev.stopPropagation();
-                var img = this.getElementsByTagName('img')[0];
-                var newSrc = img.src.replace(/640\-/, '');
-                var newImg = new Image();
-                var dw = Math.min(document.body.offsetWidth, window.innerWidth);
-                var dh = Math.min(document.body.offsetHeight, window.innerHeight);
-                var f = Math.min(1, (dw - 20) / 1024, (dh - 20) / 767);
-                var w = 1024*f;
-                var h = 767*f;
-                newImg.width = w;
-                newImg.height = h;
-                newImg.className = img.className;
-                newImgDiv = document.createElement('div');
-                newImgDiv.className = 'kenburns';
-                newImgDiv.style.width = w + 'px';
-                newImgDiv.style.height = h + 'px';
-                newImgDiv.style.left = ev.clientX - w/2 + 'px';
-                newImgDiv.style.top = ev.clientY - h/2 + 'px';
-                newImgDiv.appendChild(newImg);
-                newImg.onload = function() {
-                  newImgDiv.style.left = (dw - w) / 2 + 'px';
-                  newImgDiv.style.top = (dh - h) / 2 + 'px';
-                  newImgDiv.setAttribute('zoomin', 'true');
-                  newImg.setAttribute('zoomin', 'true');
-                };
-                newImg.src = newSrc;
-                var newLightbox = document.createElement('div');
-                newLightbox.className = 'lightbox';
-                newLightbox.appendChild(newImgDiv);
-                document.body.appendChild(newLightbox);
-                currentImage = newLightbox;
-                setTimeout(function() {
-                  newLightbox.style.opacity = 1;
-                },0);
-              }
-            };
+            var img = a.getElementsByTagName('img')[0];
+            var src = img.src.replace(/640\-/, '');
+            lightboxLink(a, src, img.className);
           }
         }
       })();
