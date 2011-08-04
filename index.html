@@ -103,7 +103,9 @@
             newImg.setAttribute('zoomin', 'true');
             Spinner.remove(spinner);
           }, false);
+setTimeout(function(){ 
           newImg.src = src; 
+}, 3000);
           var newLightbox = document.createElement('div');
           newLightbox.className = 'lightbox';
           spinner.style.left = (dw-50)/2 + 'px';
