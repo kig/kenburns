@@ -22,6 +22,14 @@
   transition-duration: @origin;
 }
 
+.transition-delay (@origin) {
+  -webkit-transition-delay: @origin;
+  -moz-transition-delay: @origin;
+  -o-transition-delay: @origin;
+  -ms-transition-delay: @origin;
+  transition-delay: @origin;
+}
+
 .transition-timing-function (@origin) {
   -webkit-transition-timing-function: @origin;
   -moz-transition-timing-function: @origin;
@@ -99,6 +107,7 @@ section.photoslide {
   box-shadow: 0px 0px 5px rgba(0,0,0,0.75);
   .transform(scale(0.0));
   .transform-origin(50% 50%);
+  .transition-delay(0.5s);
 }
 div.kenburns[zoomin=true] {
   .transform(scale(1.0));
@@ -109,7 +118,8 @@ div.kenburns[zoomin=true] {
   display: block;
   top: 0px;
   left: 0px;
-  -webkit-transition-delay: 0.5s;
+  .transition-delay(1s);
+  .transition-timing-function(ease-in-out);
   .transition-duration(10s);
   .transform(scale(1.0));
   .transform-origin(50% 50%);
