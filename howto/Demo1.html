@@ -3,26 +3,41 @@
 <style type="text/css">
     .kenburns {
       position: relative;
-      width: 480px; height: 320px;
       overflow: hidden;
+      display: inline-block;
     }
     .kenburns img {
       position: absolute;
       left: 0px;
       top: 0px;
+      -o-transition-duration: 3s;
+      -ms-transition-duration: 3s;
+      -moz-transition-duration: 3s;
       -webkit-transition-duration: 3s;
+      -o-transform: scale(1.0);
+      -ms-transform: scale(1.0);
+      -moz-transform: scale(1.0);
       -webkit-transform: scale(1.0);
+      -o-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+      -moz-transform-origin: 50% 50%;
       -webkit-transform-origin: 50% 50%;
     }
     .kenburns img:hover {
+      -o-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+      -moz-transform: scale(1.5);
       -webkit-transform: scale(1.5);
+      -o-transform-origin: 0% 25%;
+      -ms-transform-origin: 0% 25%;
+      -moz-transform-origin: 0% 25%;
       -webkit-transform-origin: 0% 25%;
     }
   </style>
 </head>
 
 <body>
-  <div class="kenburns">
+  <div class="kenburns" style="width: 480px; height: 320px;">
     <img src="../640-image1.jpg" width="480" height="320">
   </div>
   <p>Hover over me!</p>
