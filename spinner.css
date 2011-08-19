@@ -1,33 +1,37 @@
-@-webkit-keyframes bringInAnim {
+@-webkit-keyframes spinner-bringInAnim {
   0% { opacity: 0; -webkit-transform: scale(0); }
   100% { opacity: 1; -webkit-transform: scale(1); }
 }
-@-moz-keyframes bringInAnim {
+@-moz-keyframes spinner-bringInAnim {
   0% { opacity: 0; -moz-transform: scale(0); }
   100% { opacity: 1; -moz-transform: scale(1); }
 }
-.bringIn {
+.spinner-bringIn {
   opacity: 1;
   -webkit-animation-fill-mode: both;
-  -webkit-animation: bringInAnim 0.5s 1 ease-in;
+  -webkit-animation: spinner-bringInAnim 0.5s 1 ease-in;
   -moz-animation-fill-mode: both;
-  -moz-animation: bringInAnim 0.5s 1 ease-in;
+  -moz-animation: spinner-bringInAnim 0.5s 1 ease-in;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
 }
 
-@-webkit-keyframes bringOutAnim {
+@-webkit-keyframes spinner-bringOutAnim {
   0% { opacity: 1; -webkit-transform: scale(1); }
   100% { opacity: 0; -webkit-transform: scale(0); }
 }
-@-moz-keyframes bringOutAnim {
+@-moz-keyframes spinner-bringOutAnim {
   0% { opacity: 1; -moz-transform: scale(1); }
   100% { opacity: 0; -moz-transform: scale(0); }
 }
-.bringOut {
+.spinner-bringOut {
   opacity: 0;
   -webkit-animation-fill-mode: both;
-  -webkit-animation: bringOutAnim 0.5s 1 ease-in;
+  -webkit-animation: spinner-bringOutAnim 0.5s 1 ease-in;
   -moz-animation-fill-mode: both;
-  -moz-animation: bringOutAnim 0.5s 1 ease-in;
+  -moz-animation: spinner-bringOutAnim 0.5s 1 ease-in;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
 }
 
 @-webkit-keyframes spinnerAnim {
@@ -40,7 +44,7 @@
 }
 .spinner {
   -webkit-animation: spinnerAnim 1.5s infinite linear;
-  -webkit-transform-origin: 50% 50%;
   -moz-animation: spinnerAnim 1.5s infinite linear;
+  -webkit-transform-origin: 50% 50%;
   -moz-transform-origin: 50% 50%;
 }

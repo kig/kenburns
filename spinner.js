@@ -1,7 +1,7 @@
 Spinner = {
     create : function() {
         var spinner = document.createElement('div');
-        spinner.className = 'bringIn';
+        spinner.className = 'spinner-bringIn';
         spinner.style.position = 'absolute';
         spinner.style.left = (window.innerWidth-50)/2 + 'px';
         spinner.style.top = (window.innerHeight-50)/2 + 'px';
@@ -27,6 +27,6 @@ Spinner = {
     remove : function(spinner) {
         spinner.addEventListener('webkitAnimationEnd', this.removeSelf, false);
         spinner.addEventListener('animationend', this.removeSelf, false);
-        spinner.className = 'bringOut';
+        spinner.className = 'spinner-bringOut';
     }
 };
